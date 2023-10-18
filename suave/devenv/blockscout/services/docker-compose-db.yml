@@ -3,6 +3,7 @@ version: '3.8'
 services:
   blockscout-db-init:
     image: postgres:14
+    platform: linux/amd64
     volumes:
       - ./blockscout-db-data:/var/lib/postgresql/data
     entrypoint:
@@ -16,6 +17,7 @@ services:
       blockscout-db-init:
         condition: service_completed_successfully
     image: postgres:14
+    platform: linux/amd64
     user: 2000:2000
     restart: always
     container_name: 'blockscout-db'
